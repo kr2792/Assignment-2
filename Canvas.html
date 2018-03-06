@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Cinema Seating Plan Canvas</title>
+    <script src="jquery-3.2.1.min.js"></script>
+</head>
+<body>
+<canvas id="canvas1" width="350" height="350"></canvas>
+<script>
+    const STATE_GREEN = "rgb(13,114,0)";
+    const STATE_BLUE = "rgb(0,0,255)";
+    const STATE_WHITE = "rgb(255,255,255)"
+    const SEAT_WIDTH = 22;
+    const SEAT_HEIGHT = 22;
+    var seats = [ ];
+    var canvas = document.getElementById("canvas1");
+    var ctx = canvas.getContext("2d");
+
+    function createSeats() {
+        //Creating the seats
+        var seatId = 1;
+        for (var i = 1; i < 320; i += 40) {
+            for (var j = 1; j < 300; j += 30) {
+                seats.push({pos: [j, i], state: STATE_GREEN, id: seatId, available: 0});
+                seatId++;
+            }
+        }
+
+
+        draw();
+        canvas.addEventListener('click', function (e) {
+            var seatMinX;
+            var seatMaxX;
+            var seatMinY;
+            var seatMaxY;
+            for(var i = 0; i < seats.length; i++) {
+                seatMinX = seats[i].pos[0];
+                seatMaxX = seats[i].pos[0] + 30;
+                seatMinY = seats[i].pos[1];
+                seatMaxY = seats[i].pos[1] + 30;
+
+                if(seatMinX < e.pageX && e.pageX < seatMaxX) {
+                    if(seatMinY < e.pageY && e.pageY < seatMaxY) {
+                        if(seats[i].state !== STATE_WHITE && seats[i].state === STATE_BLUE){
+                            seats[i].state = STATE_GREEN
+                        }
+                        else if(seats[i].state !== STATE_WHITE && seats[i].state === STATE_GREEN){
+                            seats[i].state = STATE_BLUE;
+                        }
+                        draw();
+                        addPrice();
+                    }
+                }
+            }
+        }, false);
+    }
+    function draw() {
+        seats.forEach(function(x) {
+            ctx.fillStyle = x.state;
+            ctx.strokeRect(x.pos[0], x.pos[1], SEAT_WIDTH, SEAT_HEIGHT);
+            ctx.fillRect(x.pos[0], x.pos[1], SEAT_WIDTH, SEAT_HEIGHT);
+        });
+    }
+    function submitSeats() {
+        for (var i = 0; i < seats.length; i++) {
+            if (seats[i].state === STATE_BLUE) {
+                seats[i].state = STATE_WHITE;
+                seats[i].available = 1;
+                //Send id og available to server
+                draw();
+                addPrice();
+            }
+        }
+    }
+   function addPrice() {
+       var tempPrice = 0;
+       for (var i = 0; i < seats.length; i++) {
+           if (seats[i].state === STATE_BLUE) {
+                tempPrice += 90;
+                //
+           }
+       }
+       var text = "Tín samlaði prísur er: ";
+       var price = text.concat(tempPrice.toString());
+
+       $("#totalPrice").text(price);
+   }
+   function goBack() {
+       window.history.back();
+   }
+
+
+   window.addEventListener("load",createSeats, false);
+
+
+</script>
+<button id="submit" onclick="submitSeats()">Keyp</button>
+<button id="goBack" onclick="goBack()">Aftur</button>
+    <p id="totalPrice"></p>
+</body>
+</html>
