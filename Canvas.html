@@ -6,7 +6,7 @@
     <script src="jquery-3.2.1.min.js"></script>
 </head>
 <body>
-<canvas id="canvas1" width="350" height="350"></canvas>
+<canvas id="canvas1" width="500" height="390"></canvas>
 <script>
     const STATE_GREEN = "rgb(13,114,0)";
     const STATE_BLUE = "rgb(0,0,255)";
@@ -14,6 +14,7 @@
     const SEAT_WIDTH = 22;
     const SEAT_HEIGHT = 22;
     var seats = [ ];
+    var infoSeats = [ ];
     var canvas = document.getElementById("canvas1");
     var ctx = canvas.getContext("2d");
 
@@ -27,7 +28,12 @@
             }
         }
 
+        infoSeats.push({pos:[340, 1], state: STATE_GREEN});
+        infoSeats.push({pos:[340,30], state: STATE_WHITE});
+        infoSeats.push({pos:[340,60], state: STATE_BLUE});
 
+
+        addMovieTitle();
         draw();
         canvas.addEventListener('click', function (e) {
             var seatMinX;
@@ -56,11 +62,27 @@
         }, false);
     }
     function draw() {
+        ctx.clearRect(0,0,canvas.width, canvas.height); //Clearing the canvas for redrawing
+
         seats.forEach(function(x) {
             ctx.fillStyle = x.state;
             ctx.strokeRect(x.pos[0], x.pos[1], SEAT_WIDTH, SEAT_HEIGHT);
             ctx.fillRect(x.pos[0], x.pos[1], SEAT_WIDTH, SEAT_HEIGHT);
         });
+        infoSeats.forEach(function(x) {
+            ctx.fillStyle = x.state;
+            ctx.strokeRect(x.pos[0], x.pos[1], SEAT_WIDTH, SEAT_HEIGHT);
+            ctx.fillRect(x.pos[0], x.pos[1], SEAT_WIDTH, SEAT_HEIGHT);
+        });
+
+        ctx.strokeRect(5,359,280,25);
+        ctx.fillStyle = "black";
+        ctx.font = ("20px Arial");
+        ctx.fillText("Screen", 108,378);
+        ctx.fillText("Available", 370, 20);
+        ctx.fillText("Sold", 370, 49);
+        ctx.fillText("Selected", 370, 79);
+
     }
     function submitSeats() {
         for (var i = 0; i < seats.length; i++) {
@@ -72,13 +94,14 @@
                 addPrice();
             }
         }
+        alert("Tín bílegging er skrásett");
+        goBack();
     }
    function addPrice() {
        var tempPrice = 0;
        for (var i = 0; i < seats.length; i++) {
            if (seats[i].state === STATE_BLUE) {
                 tempPrice += 90;
-                //
            }
        }
        var text = "Tín samlaði prísur er: ";
@@ -89,14 +112,22 @@
    function goBack() {
        window.history.back();
    }
+   function addMovieTitle() {
+       var title; //Get movie title from database
+       $("#movieTitle").text(title);
+   }
 
 
    window.addEventListener("load",createSeats, false);
 
 
 </script>
+<br>
+<br>
+<br>
 <button id="submit" onclick="submitSeats()">Keyp</button>
 <button id="goBack" onclick="goBack()">Aftur</button>
     <p id="totalPrice"></p>
+    <h1 id="movieTitle"></h1>
 </body>
 </html>
