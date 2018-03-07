@@ -37,13 +37,12 @@
             <!--    Start Navigation Menu    -->
             <section class="top-bar-section" id="mean_nav">
               <ul class="right">
-                <li><a href="#services">Sýningar í dag</a></li>
+                <li><a href="#syningar">Sýningar í dag</a></li>
                 <li><a href="#testimonials">Komandi filmar</a></li>
 
               </ul>
             </section>
             <!--    End Navigation Menu    -->
-
           </nav>
         </div>
       </header>
@@ -74,64 +73,86 @@
         
                     <h2 class="modalTitle">Pulp fiction.</h2>
 
-          <div class="small-6 columns">
+          <div class="small-12 large-6 columns">
            <p class="lead">Prod. Quentin Tarantino</p>
               <p>
               The lives of two mob hitmen, a boxer, a gangster's wife, and a pair of diner bandits intertwine in four tales of violence and redemption.
               </p>
-            <button type="button" class="success button">KEYP SETUR</button>
-
+              
+              <label>Tíð
+  <select>
+    <option value="Kl. 17.50">Kl. 17.50</option>
+    <option value="Kl. 20.45">Kl. 20.45</option>
+  </select>
+</label>
+              <a href="" data-reveal-id="CanvasModal" class="button">Keyp Setur</a>
               </div>
         <a class="close-reveal-modal" aria-label="Close">&#215;</a>
           
-           <div class="small-6 columns">
+           <div class="small-12 large-6 columns">
         <iframe width=auto height='250' src="https://www.youtube.com/embed/s7EdQ4FqbhY" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="text-align: center"></iframe>
             </div>
-    
       </div>
+
 
         <!--    Modals end here    -->
 
         <!--////////////////////////////////////////////////////////-->
         <!--////////////////////////////////////////////////////////-->
+
+    
+    
+    <div id="CanvasModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+      <div class="wrapper">
+    <div class="h_iframe">
+        <!-- a transparent image is preferable -->
+        <img class="ratio" src="http://www.crossfire-radio.com/test/images/image16x9.png"/>
+        <iframe src="Canvas.html" frameborder="0" allowfullscreen></iframe>
+    </div>
+</div>
+      </div>
+    
+    
+        <!--////////////////////////////////////////////////////////-->
+        <!--////////////////////////////////////////////////////////-->
+
         
         <!--   Sýningar i dag begin here    -->
     <!--  Start Services Section  -->
+    <div class="row">
     <section class="syningar" id="syningar">
       <!--    Start Services Titles    -->
-      <div class="row">
         <h1 class="mean_title">Sýningar í dag</h1>
         <br>
-      </div>
       <!--    End Services Titles    -->
     
-      <div class="medium-3 columns">
+      <div class="small-12 medium-6 large-3 columns"id="filmSection">
         <a href="#" data-reveal-id="PulpModal">
-          <img class="thumbnail" src='../bio/img/PulpFiction.png' alt="PULP FICTION.">
+          <img class="thumbnail" src='../img/PulpFiction.png' alt="PULP FICTION.">
           <h3 class="filmTitle">Pulp Fiction</h3>
       </a>  
           </div>
           
           
-        <div class="medium-3 columns">
-          <img class="thumbnail" src="../bio/img/BlackPanther.png" alt="BLACK PANTHER.">
+        <div class="small-12 medium-6 large-3 columns"id="filmSection">
+          <img class="thumbnail" src="../img/BlackPanther.png" alt="BLACK PANTHER.">
           <h3 class="filmTitle">Black Panther</h3>
         </div>
           
           
-        <div style="text-align: center" class="medium-3 columns">
-          <img class="thumbnail" src="../bio/img/DarkestHour.png" alt="DARKEST HOUR.">
+        <div class="small-12 medium-6 large-3 columns"id="filmSection">
+          <img class="thumbnail" src="../img/DarkestHour.png" alt="DARKEST HOUR.">
           <h3 class="filmTitle">The Darkest Hour</h3>
         </div>
     
         
-           <div style="text-align: center" class="medium-3 columns">
-          <img class="thumbnail" src="../bio/img/ShapeOfWater.png" alt="The Shape of water.">
+           <div class="small-12 medium-6 large-3 columns" id="filmSection">
+          <img class="thumbnail" src="../img/ShapeOfWater.png" alt="The Shape of water.">
           <h3 class="filmTitle">The shape of water</h3>
         </div>
     </section>
-    <br>
-    <!--  Sýningar í dag end here. -->
+    </div>
+    <!--  Sýningar í dag ends here. -->
     
     <!--////////////////////////////////////////////////////////-->
     <!--////////////////////////////////////////////////////////-->
@@ -182,14 +203,6 @@
       </div>
     </footer>
     <!--  End Footer Section  -->
-
-    <!--    Start Back To Top    -->
-    <a href="#" class="btn_fancy" id="back_top">
-      <div class="solid_layer"></div>
-      <div class="border_layer"></div>
-      <div class="text_layer"><img src="img/top_arrow.png" alt="Back to top" title="" class="top_arrow"></div>
-    </a>
-    <!--    End Back To Top    -->
 
 
 
