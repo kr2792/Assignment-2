@@ -11,6 +11,95 @@
     <link rel="stylesheet" href="css/main.css" />
 
     <!--    Javascript files are placed before </body>    -->
+
+      <script>
+          function pulp(name) {
+              if(name === "pulp") {
+                     document.getElementById('movieModal').innerHTML =
+                  '<div id="PulpModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog"> ' +
+                  '<h2 class="modalTitle">Pulp fiction.</h2>' +
+                  '<div class="small-12 large-6 columns">' +
+                  '<p class="lead">Prod. Quentin Tarantino</p>' +
+                  '<p>The lives of two mob hitmen, a boxer, a gangsters wife, and a pair of diner bandits intertwine in four tales of violence and redemption. </p>' +
+                  '<label>Tíð' +
+                  '<select>' +
+                  '<option value="Kl. 17.50">Kl. 17.50</option>' +
+                  '<option value="Kl. 20.45">Kl. 20.45</option>' +
+                  '</select>' +
+                  '</label>' +
+                  '<a href="" data-reveal-id="CanvasModal" class="button">Keyp Setur</a>' +
+                  '</div>' +
+                  '<a class="close-reveal-modal" aria-label="Close">&#215;</a>' +
+                  '<div class="small-12 large-6 columns">' +
+                  '<iframe width="450" height="315"  src="https://www.youtube.com/embed/s7EdQ4FqbhY" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="text-align: center"></iframe>' +
+                  '</div>' +
+                  '</div>';
+              }
+              else if(name === "black") {
+                  document.getElementById('movieModal').innerHTML =
+                      '<div id="PulpModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog"> ' +
+                      '<h2 class="modalTitle">Black Panther</h2>' +
+                      '<div class="small-12 large-6 columns">' +
+                      '<p class="lead">Prod. Ryan Coogler</p>' +
+                      '<p>T\'Challa, the King of Wakanda, rises to the throne in the isolated, technologically advanced African nation, but his claim is challenged by a vengeful outsider who was a childhood victim of T\'Challa\'s father\'s mistake.</p>' +
+                      '<label>Tíð' +
+                      '<select>' +
+                      '<option value="Kl. 16.00">Kl. 16.00</option>' +
+                      '<option value="Kl. 22.25">Kl. 22.25</option>' +
+                      '</select>' +
+                      '</label>' +
+                      '<a href="" data-reveal-id="CanvasModal" class="button">Keyp Setur</a>' +
+                      '</div>' +
+                      '<a class="close-reveal-modal" aria-label="Close">&#215;</a>' +
+                      '<div class="small-12 large-6 columns">' +
+                      '<iframe width="450" height="315" src="https://www.youtube.com/embed/xjDjIWPwcPU" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>' +
+                      '</div>' +
+                      '</div>';
+              }
+              else if(name === "dark") {
+                  document.getElementById('movieModal').innerHTML =
+                      '<div id="PulpModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog"> ' +
+                      '<h2 class="modalTitle">Darkest Hour</h2>' +
+                      '<div class="small-12 large-6 columns">' +
+                      '<p class="lead">Prod. Joe Wright</p>' +
+                      '<p>During the early days of World War II, the fate of Western Europe hangs on the newly-appointed British Prime Minister Winston Churchill, who must decide whether to negotiate with Adolf Hitler, or fight on against incredible odds.<p>' +
+                      '<label>Tíð' +
+                      '<select>' +
+                      '<option value="Kl. 19.00">Kl. 19.00</option>' +
+                      '<option value="Kl. 22.00">Kl. 22.00</option>' +
+                      '</select>' +
+                      '</label>' +
+                      '<a href="" data-reveal-id="CanvasModal" class="button">Keyp Setur</a>' +
+                      '</div>' +
+                      '<a class="close-reveal-modal" aria-label="Close">&#215;</a>' +
+                      '<div class="small-12 large-6 columns">' +
+                      '<iframe width="450" height="315" src="https://www.youtube.com/embed/LtJ60u7SUSw" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>' +
+                      '</div>' +
+                      '</div>';
+              }
+              else if(name === "shape") {
+                  document.getElementById('movieModal').innerHTML =
+                      '<div id="PulpModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog"> ' +
+                      '<h2 class="modalTitle">The Shape of Water</h2>' +
+                      '<div class="small-12 large-6 columns">' +
+                      '<p class="lead">Prod. Guillermo del Toro</p>' +
+                      '<p>At a top secret research facility in the 1960s, a lonely janitor forms a unique relationship with an amphibious creature that is being held in captivity.</p>' +
+                      '<label>Tíð' +
+                      '<select>' +
+                      '<option value="Kl. 20.00">Kl. 20.00</option>' +
+                      '<option value="Kl. 23.00">Kl. 23.00</option>' +
+                      '</select>' +
+                      '</label>' +
+                      '<a href="" data-reveal-id="CanvasModal" class="button">Keyp Setur</a>' +
+                      '</div>' +
+                      '<a class="close-reveal-modal" aria-label="Close">&#215;</a>' +
+                      '<div class="small-12 large-6 columns">' +
+                      '<iframe width="450" height="315" src="https://www.youtube.com/embed/XFYWazblaUA" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>' +
+                      '</div>' +
+                      '</div>';
+              }
+          }
+      </script>
   </head>
   
   <body>
@@ -38,7 +127,6 @@
             <section class="top-bar-section" id="mean_nav">
               <ul class="right">
                 <li><a href="#syningar">Sýningar í dag</a></li>
-                <li><a href="#testimonials">Komandi filmar</a></li>
 
               </ul>
             </section>
@@ -50,8 +138,8 @@
       <!--    Start Hero Caption    -->
       <section class="caption">
         <div class="row">
-          <h1 class="mean_cap">Havnar Bio</hA>
-          <h2 class="sub_cap">Altíð nýggjastu filmarnir.</h2>
+          <h1 class="mean_cap">Havnar Bio</h1>
+            <h2 class="sub_cap">Altíð nýggjastu filmarnir.</h2>
           <a href="#" class="btn_details"><span>Nýggjastu filmarnir</span> <img src="img/btn_arrow.png" alt="" src="" class="arrow"></a>
         </div>
       </section>
@@ -60,55 +148,27 @@
     </section>
     <!--  End Hero Section  -->
 
-
-
-
         <!--////////////////////////////////////////////////////////-->
         <!--////////////////////////////////////////////////////////-->
 
       <!--    Modals begin here    -->
 
-
-      <div id="PulpModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
-        
-                    <h2 class="modalTitle">Pulp fiction.</h2>
-
-          <div class="small-12 large-6 columns">
-           <p class="lead">Prod. Quentin Tarantino</p>
-              <p>
-              The lives of two mob hitmen, a boxer, a gangster's wife, and a pair of diner bandits intertwine in four tales of violence and redemption.
-              </p>
-              
-              <label>Tíð
-  <select>
-    <option value="Kl. 17.50">Kl. 17.50</option>
-    <option value="Kl. 20.45">Kl. 20.45</option>
-  </select>
-</label>
-              <a href="" data-reveal-id="CanvasModal" class="button">Keyp Setur</a>
-              </div>
-        <a class="close-reveal-modal" aria-label="Close">&#215;</a>
-          
-           <div class="small-12 large-6 columns">
-        <iframe width=auto height='250' src="https://www.youtube.com/embed/s7EdQ4FqbhY" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen style="text-align: center"></iframe>
-            </div>
-      </div>
-
+        <div id="movieModal"></div>
 
         <!--    Modals end here    -->
 
         <!--////////////////////////////////////////////////////////-->
         <!--////////////////////////////////////////////////////////-->
 
-    
-    
     <div id="CanvasModal" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
       <div class="wrapper">
     <div class="h_iframe">
         <!-- a transparent image is preferable -->
         <img class="ratio" src="http://www.crossfire-radio.com/test/images/image16x9.png"/>
         <iframe src="Canvas.html" frameborder="0" allowfullscreen></iframe>
+
     </div>
+          <a class="close-reveal-modal" aria-label="Close">&#215;</a>
 </div>
       </div>
     
@@ -126,29 +186,35 @@
         <br>
       <!--    End Services Titles    -->
     
-      <div class="small-12 medium-6 large-3 columns"id="filmSection">
+      <div class="small-12 medium-6 large-3 columns" onclick="pulp('pulp')">
         <a href="#" data-reveal-id="PulpModal">
-          <img class="thumbnail" src='../img/PulpFiction.png' alt="PULP FICTION.">
+          <img class="thumbnail" src='../HavnarBio.com/img/PulpFiction.png' alt="PULP FICTION.">
           <h3 class="filmTitle">Pulp Fiction</h3>
       </a>  
           </div>
           
           
-        <div class="small-12 medium-6 large-3 columns"id="filmSection">
-          <img class="thumbnail" src="../img/BlackPanther.png" alt="BLACK PANTHER.">
+        <div class="small-12 medium-6 large-3 columns" onclick="pulp('black')">
+            <a href="#" data-reveal-id="PulpModal">
+          <img class="thumbnail" src="../HavnarBio.com/img/BlackPanther.png" alt="BLACK PANTHER.">
           <h3 class="filmTitle">Black Panther</h3>
+            </a>
         </div>
           
           
-        <div class="small-12 medium-6 large-3 columns"id="filmSection">
-          <img class="thumbnail" src="../img/DarkestHour.png" alt="DARKEST HOUR.">
+        <div class="small-12 medium-6 large-3 columns" onclick="pulp('dark')">
+            <a href="#" data-reveal-id="PulpModal">
+          <img class="thumbnail" src="../HavnarBio.com/img/DarkestHour.png" alt="DARKEST HOUR.">
           <h3 class="filmTitle">The Darkest Hour</h3>
+            </a>
         </div>
     
         
-           <div class="small-12 medium-6 large-3 columns" id="filmSection">
-          <img class="thumbnail" src="../img/ShapeOfWater.png" alt="The Shape of water.">
-          <h3 class="filmTitle">The shape of water</h3>
+           <div class="small-12 medium-6 large-3 columns" onclick="pulp('shape')">
+               <a href="#" data-reveal-id="PulpModal">
+          <img class="thumbnail" src="../HavnarBio.com/img/ShapeOfWater.png" alt="The Shape of water.">
+          <h3 class="filmTitle">The Shape of Water</h3>
+               </a>
         </div>
     </section>
     </div>
