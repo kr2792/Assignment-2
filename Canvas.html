@@ -14,7 +14,7 @@
 <script>
     const STATE_GREEN = "rgb(13,114,0)";
     const STATE_BLUE = "rgb(0,0,255)";
-    const STATE_WHITE = "rgb(255,255,255)"
+    const STATE_WHITE = "rgb(255,255,255)";
     const SEAT_WIDTH = 22;
     const SEAT_HEIGHT = 22;
     var seats = [ ];
@@ -89,16 +89,33 @@
 
     }
     function submitSeats() {
-        for (var i = 0; i < seats.length; i++) {
+
+        /*for (var i = 0; i < seats.length; i++) {
             if (seats[i].state === STATE_BLUE) {
                 seats[i].state = STATE_WHITE;
                 seats[i].available = 1;
                 //Send id og available to server
-                draw();
-                addPrice();
+
             }
-        }
-        alert("Tín bílegging er skrásett");
+        }*/
+            var selected = seats.filter(function (it) {
+                return it.state === STATE_BLUE
+            }).map(function (it) {
+                return it.id;
+            });
+
+            $.post("bookSeats.php", {seats: selected})
+                .fail(function (xhr) {
+                    alert(xhr.status);
+                })
+                .done(function (data, status, xhr) {
+                    alert(status + ':' + xhr.status);
+                    alert("Tín bílegging er skrásett");
+                    draw();
+
+                });
+
+
     }
    function addPrice() {
        var tempPrice = 0;
