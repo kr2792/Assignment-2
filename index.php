@@ -2,9 +2,6 @@
 Allan Midjord
 index.php
 hackerboys
-
-!!!Not finished!!!
-Everything is echoed twice...
 -->
 
 <!DOCTYPE html>
@@ -61,21 +58,20 @@ Everything is echoed twice...
                     echo "<th>Genre</th>";
                     echo "<th>Censur</th>";
                     echo "<th>ID</th>";
-                    echo "<th>Syning ID</th>";
                     echo "</tr>";
                 echo "</thead>";
                 echo "<tbody>";
 
-
-
-
-
                 while($row = mysqli_fetch_array($result)){
 
                     echo '<tr>';
-                    foreach($row as $field) {
-                        echo '<td>'. ($field) . '</td>';
-                    }
+                        echo '<td>'. $row["name"] . '</td>';
+                        echo '<td>'. $row["length"] . '</td>';
+                        echo '<td>'. $row["release_date"] . '</td>';
+                        echo '<td>'. $row["information"] . '</td>';
+                        echo '<td>'. $row["genre"] . '</td>';
+                        echo '<td>'. $row["censur"] . '</td>';
+                        echo '<td>'. $row["ID"] . '</td>';
                     echo '</tr>';
 
                 }
