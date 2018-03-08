@@ -21,14 +21,10 @@ $name_err = $length_err = $release_date_err = $information_err = $genre_err = $c
 // Processing form data when form is submitted
 if($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    // Validate name
+    /// Validate name
     $input_name = trim($_POST["name"]);
     if (empty($input_name)) {
         $name_err = 'Please enter a movie title.';
-
-        // if the input IS only integers then it is not a valid title
-    } elseif (ctype_digit($input_name)) {
-        $name_err = 'Please enter a valid title.';
     } else {
         $name = $input_name;
     }
