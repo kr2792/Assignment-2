@@ -172,7 +172,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 <!--                     length-->
                     <div class="form-group <?php echo (!empty($length_err)) ? 'has-error' : ''; ?>">
                         <label>length</label>
-                        <textarea name="length" class="form-control"><?php echo $length; ?></textarea>
+                        <input type="text" class="form-control" value="<?php echo $length; ?>">
                         <span class="help-block"><?php echo $length_err;?></span>
                     </div>
 
