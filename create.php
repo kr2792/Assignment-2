@@ -26,7 +26,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($input_name)) {
         $name_err = 'Please enter a movie title.';
 
-        // if the input is only integers then it is not a valid title
+        // if the input IS only integers then it is not a valid title
     } elseif (ctype_digit($input_name)) {
         $name_err = 'Please enter a valid title.';
     } else {
@@ -72,7 +72,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     $input_censur = trim($_POST["censur"]);
     if (empty($input_censur)) {
         $censur_err = "Please enter age restriction.";
-        // if the input is not an integer
+        // if the input is NOT an integer
     } elseif (!ctype_digit($input_censur)) {
         $censur_err = 'Please enter a positive integer value for the age restriction.';
     } else {
@@ -107,7 +107,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
             // Attempt to execute the prepared statement
             if (mysqli_stmt_execute($stmt)) {
                 // Records created successfully. Redirect to landing page
-                header("location: create.php?Success");
+                header("location: index.php?Success");
                 exit();
             } else {
                 echo "Something went wrong. Please try again later.";
@@ -124,10 +124,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     mysqli_close($link);
 }
 
-    if (isset($_GET["Success"])) {
-        echo "Movie was saved!";
-    }
-
 ?>
 
 <!DOCTYPE html>
@@ -136,12 +132,25 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <title>Create Record</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <style type="text/css">
         .wrapper{
             width: 500px;
             margin: 0 auto;
         }
     </style>
+
+
+    <script>
+        $(document).ready(function(){
+            $("p").click(function(){
+                $(this).hide();
+            });
+        });
+    </script>
+
+
+
 </head>
 <body>
 <div class="wrapper">
@@ -151,7 +160,6 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="page-header">
                     <h2>Create movie</h2>
                 </div>
-                <p>Please fill this form and submit to add movie to the database.</p>
                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
 
 <!--                     Name-->
@@ -197,8 +205,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
                     </div>
 
 
+
+                    <p> click on this text to hide it using jQuery</p>
+
+
                     <input type="submit" class="btn btn-primary" value="Submit">
                     <a href="index.php" class="btn btn-default">Cancel</a>
+
+
 
                 </form>
             </div>
