@@ -1,0 +1,172 @@
+.btn {
+    margin-right: 10px;
+    margin-bottom:5px;
+}
+
+.btn .fa {
+    margin-right: 8px;   
+}
+
+.btn-twitter {
+    background: #00acee;
+    color: #fff;
+    font-size: large;
+}
+.btn-twitter:link, .btn-twitter:visited {
+    color: #fff
+}
+.btn-twitter:active, .btn-twitter:hover {
+    background: #0087bd;
+    color: #fff
+}
+.btn-facebook {
+    background: #3b5998;
+    color: #fff;
+    font-size: large;
+}
+.btn-facebook:link, .btn-facebook:visited {
+    color: #fff
+}
+.btn-facebook:active, .btn-facebook:hover {
+    background: #30477a;
+    color: #fff
+}
+.btn-googleplus {
+    background: #e93f2e;
+    color: #fff;
+    font-size: large;
+}
+.btn-googleplus:link, .btn-googleplus:visited {
+    color: #fff
+}
+.btn-googleplus:active, .btn-googleplus:hover {
+    background: #ba3225;
+    color: #fff
+}
+.btn-stumbleupon {
+    background: #f74425;
+    color: #fff;
+    font-size: large;
+}
+.btn-stumbleupon:link, .btn-stumbleupon:visited {
+    color: #fff
+}
+.btn-stumbleupon:active, .btn-stumbleupon:hover {
+    background: #c7371e;
+    color: #fff
+}
+.btn-linkedin {
+    background: #0e76a8;
+    color: #fff;
+    font-size: large;
+}
+.btn-linkedin:link, .btn-linkedin:visited {
+    color: #fff
+}
+.btn-linkedin:active, .btn-linkedin:hover {
+    background: #0b6087;
+    color: #fff
+}
+
+/* CODE COLORING */
+
+               code {
+        font-family: "Lucida Console", "Monaco", monospace;
+    }
+
+    pre {
+        color: #fff;
+        font-size: 13px;
+        background: #000;
+        padding: 10px;
+        line-height: 18px;
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
+        border-radius: 5px;
+        word-wrap: break-word;
+        margin-bottom: 15px;
+    }
+
+    code span {
+        -moz-transition: color .8s ease-in;
+        -o-transition: color .8s ease-in;
+        -webkit-transition: color .8s ease-in;
+        transition: color .8s ease-in;
+    }
+
+    .animate {
+        color: #fff !important;
+    }
+
+    .red {
+        color: #f50419;
+    }
+
+    .orange {
+        color: #f57900;
+    }
+
+    .yellow {
+        color: #f5e600;
+    }
+
+    .green {
+        color: #00f50c;
+    }
+
+    .blue {
+        color: #0081f5;
+    }
+
+    .indigo {
+        color: #5000f5;
+    }
+
+    .violet {
+        color: #7d05f5;
+    }
+
+    .comment {
+        color: #223576;
+    }
+
+    .javascript .comment {
+        color: #535353;
+    }
+
+    .meta, .entity {
+        color: #f03200;
+    }
+
+    .support {
+        color: #006dcf;
+    }
+
+    .string {
+        color: #00f50c;
+    }
+
+    .string.regexp {
+        color: #fff;
+    }
+
+    .support.attribute, .support.css-property, .support.regex.modifier {
+        color: #0087ff;
+    }
+
+    .support.value {
+        color: #1bbbcf;
+    }
+
+    .integer, .constant {
+        color: #d8fa3c;
+    }
+
+    .keyword, .selector, .storage {
+        color: #fbde2d;
+    }
+
+    .constant.regex.escape {
+        color: #d8fa3c;
+    }
+              
