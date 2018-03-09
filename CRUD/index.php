@@ -40,54 +40,54 @@ hackerboys
                     <a href="create.php" class="btn btn-success pull-right">Add movie</a>
                 </div>
                 <?php
-                    // Include config file
-                    require_once 'config.php';
+                // Include config file
+                require_once 'config.php';
 
-                    // Attempt select query execution
-                    $sql = "SELECT * FROM filmur";
-                    if($result = mysqli_query($link, $sql)){
-                        if(mysqli_num_rows($result) > 0){
-                echo "<table class='table table-bordered table-striped'>";
-                echo "<thead>";
-                echo "<tr>";
+                // Attempt select query execution
+                $sql = "SELECT * FROM filmur";
+                if($result = mysqli_query($link, $sql)){
+                    if(mysqli_num_rows($result) > 0){
+                        echo "<table class='table table-bordered table-striped'>";
+                        echo "<thead>";
+                        echo "<tr>";
 
-                    echo "<th>Title</th>";
-                    echo "<th>Length</th>";
-                    echo "<th>Release date</th>";
-                    echo "<th>Information</th>";
-                    echo "<th>Genre</th>";
-                    echo "<th>Censur</th>";
-                    echo "<th>ID</th>";
-                    echo "<th>Actions</th>";
-                    echo "</tr>";
-                echo "</thead>";
-                echo "<tbody>";
+                        echo "<th>Title</th>";
+                        echo "<th>Length</th>";
+                        echo "<th>Release date</th>";
+                        echo "<th>Information</th>";
+                        echo "<th>Genre</th>";
+                        echo "<th>Censur</th>";
+                        echo "<th>ID</th>";
+                        echo "<th>Actions</th>";
+                        echo "</tr>";
+                        echo "</thead>";
+                        echo "<tbody>";
 
-                while($row = mysqli_fetch_array($result)){
+                        while($row = mysqli_fetch_array($result)){
 
-                    $url = 'http://localhost:63342/htdocs/Assignment-2-master/Assignment-2-master/delete.php?ID=';
+                            $url = 'http://localhost:63342/htdocs/Assignment-2-master/Assignment-2-master/delete.php?ID=';
 
-                    echo '<tr>';
-                        echo '<td>'. $row["name"] . '</td>';
-                        echo '<td>'. $row["length"] . '</td>';
-                        echo '<td>'. $row["release_date"] . '</td>';
-                        echo '<td>'. $row["information"] . '</td>';
-                        echo '<td>'. $row["genre"] . '</td>';
-                        echo '<td>'. $row["censur"] . '</td>';
-                        echo '<td>'. $row["ID"] . '</td>';
-                        echo "<td><a class='btn btn-danger btn-sm' href='{$url}{$row["ID"]}'>Delete</a></td>";
-                    echo '</tr>';
+                            echo '<tr>';
+                            echo '<td>'. $row["name"] . '</td>';
+                            echo '<td>'. $row["length"] . '</td>';
+                            echo '<td>'. $row["release_date"] . '</td>';
+                            echo '<td>'. $row["information"] . '</td>';
+                            echo '<td>'. $row["genre"] . '</td>';
+                            echo '<td>'. $row["censur"] . '</td>';
+                            echo '<td>'. $row["ID"] . '</td>';
+                            echo "<td><a class='btn btn-danger btn-sm' href='{$url}{$row["ID"]}'>Delete</a></td>";
+                            echo '</tr>';
 
-                }
-                echo "</tbody>";
-                echo "</table>";
-                // Free result set
-                mysqli_free_result($result);
+                        }
+                        echo "</tbody>";
+                        echo "</table>";
+                        // Free result set
+                        mysqli_free_result($result);
+                    } else{
+                        echo "<p class='lead'><em>No records were found.</em></p>";
+                    }
                 } else{
-                echo "<p class='lead'><em>No records were found.</em></p>";
-                }
-                } else{
-                echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
+                    echo "ERROR: Could not able to execute $sql. " . mysqli_error($link);
                 }
 
                 // Close connection
