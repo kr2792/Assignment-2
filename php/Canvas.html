@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Cinema Seating Plan Canvas</title>
+    <script src="jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/foundation.min.css" />
+    <link rel="stylesheet" href="css/main.css" />
+
+</head>
+<body>
+<canvas id="canvas1" width="500" height="355"></canvas>
+<script>
+
+
+
+    //Making const variables used for the seats
+    const STATE_GREEN = "rgb(13,114,0)";
+    const STATE_BLUE = "rgb(0,0,255)";
+    const STATE_WHITE = "rgb(255,255,255)";
+    const SEAT_WIDTH = 22;
+    const SEAT_HEIGHT = 22;
+    var seats = [ ];
+    var infoSeats = [ ];
+    var tickets = [ ];
+    var canvas = document.getElementById("canvas1");
+    var ctx = canvas.getContext("2d");
+    function createSeats() {
+        //Creating the seats
+        tickets = $.get("readSeats.php", function (data) {
+            draw(data);
+        });
+
+        var seatId = 1;
+        for (var i = 1; i < 320; i += 40) {
+            for (var j = 1; j < 300; j += 30) {
+                seats.push({pos: [j, i], state: STATE_GREEN, id: seatId, taken: 0});
+                seatId++;
+            }
+        }
+        /*Adding 3 seats to the array, used to inform the user what which seat means
+        //Green is available
+        //White is sold
+        Blue is selected*/
+        infoSeats.push({pos:[340, 1], state: STATE_GREEN});
+        infoSeats.push({pos:[340,30], state: STATE_WHITE});
+        infoSeats.push({pos:[340,60], state: STATE_BLUE});
+        draw();
+
+
+
+    }
+    //Drawing the seats on the canvas
+    function draw(tickets) {
+        ctx.clearRect(0,0,canvas.width, canvas.height); //Clearing the canvas for redrawing
+
+        //Drawing all the seats in the canvas
+        seats.forEach(function(x) {
+            ctx.strokeRect(x.pos[0], x.pos[1], SEAT_WIDTH, SEAT_HEIGHT);
+            if(x.State !== STATE_WHITE) {
+                ctx.fillStyle = x.state; //Filling the seat based on what the state the seat has
+                ctx.fillRect(x.pos[0], x.pos[1], SEAT_WIDTH, SEAT_HEIGHT);
+            }});
+        //Drawing the three info seats
+        infoSeats.forEach(function(x) {
+            ctx.fillStyle = x.state;
+            ctx.strokeRect(x.pos[0], x.pos[1], SEAT_WIDTH, SEAT_HEIGHT);
+            ctx.fillRect(x.pos[0], x.pos[1], SEAT_WIDTH, SEAT_HEIGHT);
+        });
+        //Checking if there are some sold tickets e.g. array isn't empty
+        if(tickets != null) {
+            tickets.forEach(function (x) {
+                seats.forEach(function (y) {
+                    //If the id's are the same, then draw the white seat
+                    if (x.Seat == y.id) {
+                        y.State = STATE_WHITE;
+                        ctx.fillStyle = STATE_WHITE;
+                        ctx.strokeRect(y.pos[0], y.pos[1], SEAT_WIDTH, SEAT_HEIGHT);
+                        ctx.fillRect(y.pos[0], y.pos[1], SEAT_WIDTH, SEAT_HEIGHT);
+                    }
+                });
+            });
+        }
+
+        //Making a rectangle on the button of the canvas, which is the screen
+        ctx.strokeRect(5,320,280,25);
+        ctx.fillStyle = "black";
+        ctx.font = ("20px Arial");
+        ctx.fillText("Screen", 108,340);
+
+        //Setting three texts right next to the info seats
+        ctx.fillText("Available", 370, 20);
+        ctx.fillText("Sold", 370, 49);
+        ctx.fillText("Selected", 370, 79);
+    }
+    function submitSeats() {
+
+        //Getting the id of all the seats that are selected
+        var selected = seats.filter(function (it) {
+            return it.state === STATE_BLUE
+        }).map(function (it) {
+            return it.id;
+        });
+        //For all the seats the are selected, set the state to white
+        for (var i = 0; i < seats.length; i++) {
+            if (seats[i].state === STATE_BLUE) {
+                seats[i].state = STATE_WHITE;
+                seats[i].taken = 1;
+            }
+        }
+        //Posting the seats to the bookSeats.php file
+        $.post("bookSeats.php", {seats: selected})
+            .fail(function (xhr) {
+                alert(xhr.status); //If the post fails, post the error statue
+            })
+            .done(function (data, status, xhr) {
+                alert(status + ':' + xhr.status);//If the post is succesfull, then post the success message
+                alert("Tín bílegging er skrásett");
+                draw(); //Draw the canvas again
+            });
+
+
+    }
+    //Function used to show how much the total cost will be.
+    function addPrice() {
+        var tempPrice = 0;
+        for (var i = 0; i < seats.length; i++) {
+            if (seats[i].state === STATE_BLUE) {
+                tempPrice += 90;
+            }
+        }
+        var text = "Tín samlaði prísur er: ";
+        var price = text.concat(tempPrice.toString());
+        $("#totalPrice").text(price);
+    }
+    //Adding a event listener on canvas. Every time a customer has selected a seat, this function starts.
+    canvas.addEventListener('click', function (e) {
+        var seatMinX;
+        var seatMaxX;
+        var seatMinY;
+        var seatMaxY;
+
+        //Making a for loop to check which seat was selected
+        for(var i = 0; i < seats.length; i++) {
+            seatMinX = seats[i].pos[0];
+            seatMaxX = seats[i].pos[0] + 30;
+            seatMinY = seats[i].pos[1];
+            seatMaxY = seats[i].pos[1] + 30;
+            if(seatMinX < e.pageX && e.pageX < seatMaxX) {
+                if(seatMinY < e.pageY && e.pageY < seatMaxY) {
+                    if(seats[i].state !== STATE_WHITE && seats[i].state === STATE_BLUE){
+                        seats[i].state = STATE_GREEN
+                    }
+                    else if(seats[i].state !== STATE_WHITE && seats[i].state === STATE_GREEN){
+                        seats[i].state = STATE_BLUE;
+                    }
+                    draw();
+                    addPrice();
+                }
+            }
+        }
+    }, false);
+    window.addEventListener("load",createSeats, false);
+</script>
+<form method="post" action="bookSeats.php"></form>
+<button id="submit" onclick="submitSeats()">Keyp</button>
+<p id="totalPrice"></p>
+</body>
+</html>
