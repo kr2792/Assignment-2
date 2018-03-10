@@ -1,15 +1,3 @@
-<!--
-Allan Midjord
-create.php
-hackerboys
-
-This php file creates a new movie
-and inserts it into the database havnarbio
-
--->
-
-
-
 <?php
 // Include config file
 require_once 'config.php';
