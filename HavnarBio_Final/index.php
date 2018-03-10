@@ -1,9 +1,3 @@
-<!--
-Allan Midjord
-index.php
-hackerboys
--->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
