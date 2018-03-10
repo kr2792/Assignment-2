@@ -35,7 +35,7 @@ if(isset($_POST["ID"]) && !empty($_POST["ID"])) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>View Record</title>
+    <title>View Movies</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.css">
     <style type="text/css">
         .wrapper{
@@ -50,7 +50,7 @@ if(isset($_POST["ID"]) && !empty($_POST["ID"])) {
         <div class="row">
             <div class="col-md-12">
                 <div class="page-header">
-                    <h1>Delete Record</h1>
+                    <h1>Delete Movie</h1>
                 </div>
                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                     <div class="alert alert-danger fade in">
